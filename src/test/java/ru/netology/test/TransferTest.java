@@ -35,8 +35,8 @@ public class TransferTest {
     }
 
     void balansesEquals(DashboardPage dashboardPage) {
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance("0");
+        var secondCardBalance = dashboardPage.extractBalance("1");
         if (firstCardBalance < secondCardBalance) {
             int transfer = (firstCardBalance + secondCardBalance) / 2 - firstCardBalance;
             dashboardPage.pressReplCard(0)

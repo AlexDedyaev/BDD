@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Thumbs.db*
 .DS_Store
 HELP.md
@@ -5,6 +6,27 @@ HELP.md
 build/
 
 ### STS ###
+=======
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+>>>>>>> f49f688 (initial commit)
 .apt_generated
 .classpath
 .factorypath
@@ -12,6 +34,7 @@ build/
 .settings
 .springBeans
 .sts4-cache
+<<<<<<< HEAD
 
 ### IntelliJ IDEA ###
 .idea
@@ -19,6 +42,11 @@ build/
 *.iml
 *.ipr
 out/
+=======
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+>>>>>>> f49f688 (initial commit)
 
 ### NetBeans ###
 /nbproject/private/
@@ -30,6 +58,7 @@ out/
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 ### Package Files ###
 *.jar
 *.war
@@ -43,3 +72,7 @@ out/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+=======
+### Mac OS ###
+.DS_Store
+>>>>>>> f49f688 (initial commit)
