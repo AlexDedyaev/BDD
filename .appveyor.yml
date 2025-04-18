@@ -16,6 +16,3 @@ build_script:
   - chmod +x gradlew
 
   - ./gradlew test --info -Dselenide.headless=true # запускаем тест
-
-  - ./gradlew test --info -Dselenide.headless=true # запускаем тест
-
