@@ -18,11 +18,11 @@ public class DashboardPage {
         header.shouldBe(visible);
     }
 
-    public int extractBalance(String text) {
-        String cardValue = cards.get(Integer.parseInt(text)).text();
+    public int extractBalance(int index) {
+        String cardValue = cards.get(index).text();
         val start = cardValue.indexOf(balanceStart);
         val finish = cardValue.lastIndexOf(balanceFinish);
-        val value  = cardValue.substring(start + balanceStart.length(), finish).trim();
+        val value = cardValue.substring(start + balanceStart.length(), finish).trim();
         return Integer.parseInt(value);
     }
 

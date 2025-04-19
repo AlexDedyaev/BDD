@@ -35,8 +35,8 @@ public class TransferTest {
     }
 
     void balansesEquals(DashboardPage dashboardPage) {
-        var firstCardBalance = dashboardPage.extractBalance("0");
-        var secondCardBalance = dashboardPage.extractBalance("1");
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         if (firstCardBalance < secondCardBalance) {
             int transfer = (firstCardBalance + secondCardBalance) / 2 - firstCardBalance;
             dashboardPage.pressReplCard(0)
@@ -53,77 +53,77 @@ public class TransferTest {
     void shouldTransferFromFirstCardToSecondCard() {
         DashboardPage dashboardPage = login();
         balansesEquals(dashboardPage);
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         int transfer = getTransfer(firstCardBalance);
         dashboardPage.pressReplCard(1)
                 .replCardBalance(transfer, DataHelper.getFirstCardNumber());
-        assertEquals(firstCardBalance - transfer, dashboardPage.extractBalance(String.valueOf(0)));
-        assertEquals(secondCardBalance + transfer, dashboardPage.extractBalance(String.valueOf(1)));
+        assertEquals(firstCardBalance - transfer, dashboardPage.extractBalance(0));
+        assertEquals(secondCardBalance + transfer, dashboardPage.extractBalance(1));
     }
 
     @Test
     void shouldNotTransferIfFirstCardCanceled() {
         DashboardPage dashboardPage = login();
         balansesEquals(dashboardPage);
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         int transfer = getTransfer(firstCardBalance);
         dashboardPage.pressReplCard(1)
                 .replCardCancel(transfer, DataHelper.getFirstCardNumber());
-        assertEquals(firstCardBalance, dashboardPage.extractBalance(String.valueOf(0)));
-        assertEquals(secondCardBalance, dashboardPage.extractBalance(String.valueOf(1)));
+        assertEquals(firstCardBalance, dashboardPage.extractBalance(0));
+        assertEquals(secondCardBalance, dashboardPage.extractBalance(1));
     }
 
     @Test
     void shouldTransferFromSecondCardToFirstCard() {
         DashboardPage dashboardPage = login();
         balansesEquals(dashboardPage);
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         int transfer = getTransfer(secondCardBalance);
         dashboardPage.pressReplCard(0)
                 .replCardBalance(transfer, DataHelper.getSecondCardNumber());
-        assertEquals(firstCardBalance + transfer, dashboardPage.extractBalance(String.valueOf(0)));
-        assertEquals(secondCardBalance - transfer, dashboardPage.extractBalance(String.valueOf(1)));
+        assertEquals(firstCardBalance + transfer, dashboardPage.extractBalance(0));
+        assertEquals(secondCardBalance - transfer, dashboardPage.extractBalance(1));
     }
 
     @Test
     void shouldNotTransferIfSecondCardCancelled() {
         DashboardPage dashboardPage = login();
         balansesEquals(dashboardPage);
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         int transfer = getTransfer(secondCardBalance);
         dashboardPage.pressReplCard(0)
                 .replCardCancel(transfer, DataHelper.getSecondCardNumber());
-        assertEquals(firstCardBalance, dashboardPage.extractBalance(String.valueOf(0)));
-        assertEquals(secondCardBalance, dashboardPage.extractBalance(String.valueOf(1)));
+        assertEquals(firstCardBalance, dashboardPage.extractBalance(0));
+        assertEquals(secondCardBalance, dashboardPage.extractBalance(1));
     }
 
     @Test
     void shouldNotTransfer12IfImpossibleTransfer() {
         DashboardPage dashboardPage = login();
         balansesEquals(dashboardPage);
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         int transfer = getImpossibleTransfer(firstCardBalance);
         dashboardPage.pressReplCard(1)
                 .replCardBalance(transfer, DataHelper.getFirstCardNumber());
-        assertEquals(firstCardBalance, dashboardPage.extractBalance(String.valueOf(0)));
-        assertEquals(secondCardBalance, dashboardPage.extractBalance(String.valueOf(1)));
+        assertEquals(firstCardBalance, dashboardPage.extractBalance(0));
+        assertEquals(secondCardBalance, dashboardPage.extractBalance(1));
     }
 
     @Test
     void shouldNotTransfer21IfImpossibleTransfer() {
         DashboardPage dashboardPage = login();
         balansesEquals(dashboardPage);
-        var firstCardBalance = dashboardPage.extractBalance(String.valueOf(0));
-        var secondCardBalance = dashboardPage.extractBalance(String.valueOf(1));
+        var firstCardBalance = dashboardPage.extractBalance(0);
+        var secondCardBalance = dashboardPage.extractBalance(1);
         int transfer = getImpossibleTransfer(secondCardBalance);
         dashboardPage.pressReplCard(0)
                 .replCardBalance(transfer, DataHelper.getSecondCardNumber());
-        assertEquals(firstCardBalance, dashboardPage.extractBalance(String.valueOf(0)));
-        assertEquals(secondCardBalance, dashboardPage.extractBalance(String.valueOf(1)));
+        assertEquals(firstCardBalance, dashboardPage.extractBalance(0));
+        assertEquals(secondCardBalance, dashboardPage.extractBalance(1));
     }
 }
